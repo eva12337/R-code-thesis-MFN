@@ -56,9 +56,8 @@ Browsemulti22$predicted_probsfm7 <- predicted_probsfm7
 Browsemulti22$predicted_probsfm8 <- predicted_probsfm8
 
 
-line_colors <- c("#FF9966", "#33a02c", "#0000FF", "#000000", "#FFFF00", "#00FFFF", "#FF00FF", "#808080", "#FFA500", "#FFC0CB", "#800080", "#A52A2A", "#008080", "#FFD700", "#E6E6FA" ) 
-point_color <- c("#FF9966", "#33a02c", "#00FF00", "#0000FF", "#000000", "#FFFF00", "#00FFFF", "#FF00FF", "#808080", "#FFA500", "#FFC0CB", "#800080", "#A52A2A", "#008080", "#FFD700", "#E6E6FA" ) 
-
+line_colors <- c("#FF0000", "#008000","#0000FF") 
+point_color <- c("#FF0000", "#008000","#0000FF") 
 
 ggplot(Browsemulti22, aes(SITE, predicted_probsfm3, color = as.factor(TREATMENT), group = TREATMENT)) +
   geom_point() +
@@ -108,10 +107,12 @@ ggplot(Browsemulti22, aes(Light_cover, predicted_probsfm7, color = as.factor(TRE
 
 
 ggplot(Browsemulti22, aes(Herb_cover, predicted_probsfm8, color = as.factor(TREATMENT), group = TREATMENT)) +
-  geom_point() +
-  geom_line() +
-  labs(x = "Herb cover", y = "Estimated Probability of Browse Present in 2022", color = "Treatment") +
+  geom_line(linewidth = 1) + geom_point() +
+  labs(x = "Herb and grass cover (%)", y = "Estimated Probability of Browse Present in 2022", color = "Treatment") +
   ylim(0, 1) +
   scale_x_continuous() + # Set x-axis breaks and labels
-  scale_color_manual(values = point_color, labels = c("No", "Yes"))+ 
+  scale_color_manual(values = point_color, labels = c("No Rockdust", "Rockdust"))+ 
   theme_minimal()
+
+predicted_probsfm8
+

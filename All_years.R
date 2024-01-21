@@ -18,7 +18,7 @@ all_datayears <- bind_rows(
 all_datayears
 
 # Set custom colors for the years
-line_colors <- c("#FF9966", "#33a02c","#808080", "#FFFF00", "#0000FF", "#000000",  "#00FFFF", "#FF00FF", "#FFA500", "#FFC0CB", "#800080", "#A52A2A", "#008080", "#FFD700", "#E6E6FA" ) 
+line_colors <- c("#FF0000", "#008000","#0000FF") 
 
 # Plot the results with different colored lines for each year
 ggplot(all_datayears, aes(TREATMENT, predicted_probs, color = as.factor(Year), group = Year)) +
@@ -26,6 +26,6 @@ ggplot(all_datayears, aes(TREATMENT, predicted_probs, color = as.factor(Year), g
   geom_line() +
   labs(x = "Treatment", y = "Estimated Probability of Browse Present", color = "Year") +
   ylim(0, 1) +
-  scale_x_continuous(breaks = c(0,1), labels = c("No", "Yes")) +
+  scale_x_continuous(breaks = c(0,1), labels = c("No Rockdust", "Rockdust")) +
   scale_color_manual(values = line_colors, labels = c("2020", "2021", "2022")) +  # Set custom line colors for years
   theme_minimal()

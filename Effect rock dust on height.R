@@ -184,13 +184,13 @@ ggplot(all_data_heights, aes(x = TREATMENT, y = Average_height, fill = TREATMENT
 ##species separate color but same plot
 
 ggplot(all_data_heights, aes(x = TREATMENT, y = Average_height, color = Species))+
-  geom_boxplot() +   scale_fill_manual(values = custom_colors) +labs(x = "Treatment",
+  geom_boxplot() +   scale_fill_manual(values = custom_colors) +scale_x_discrete(labels = c("No Rockdust", "Rockdust")) + labs(x = "Treatment",
                                                                      y = "Average Tree Height (cm)") 
 
 
 ## one plot for broad and pine separate boxplots
 plotbroad<- ggplot(all_data_heights, aes(x = TREATMENT, y = Average_height, color = Species))+
-  geom_boxplot() +   scale_fill_manual(values = custom_colors) +labs(title = "a", x = "Treatment",
+  geom_boxplot() +   scale_fill_manual(values = custom_colors) + labs(x = "Treatment",
                                                                      y = "Average Tree Height (cm)") 
 
 plotpine<- ggplot(HeightPinus, aes(x = TREATMENT, y = Average_height, color = Species)) +

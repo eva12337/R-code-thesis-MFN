@@ -21,3 +21,16 @@ data
 ggplot(data, aes(x = Species, y = ProportionBrowsed, color = Species))+
   geom_boxplot() +   scale_fill_manual(values = custom_colors) +labs(x = "Species",
                                                                      y = "Proportion browsed")+ theme(axis.text.x = element_blank(), axis.ticks.x = element_blank())
+
+##Post hoc
+install.packages("emmeans")
+library(emmeans)
+
+emm <- emmeans(glm_Speciespref, "Species")
+pairs(emm)
+
+
+
+
+
+
