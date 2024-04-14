@@ -107,7 +107,7 @@ ggplot(Browsemulti22, aes(Light_cover, predicted_probsfm7, color = as.factor(TRE
 
 
 ggplot(Browsemulti22, aes(Herb_cover, predicted_probsfm8, color = as.factor(TREATMENT), group = TREATMENT)) +
-  geom_line(linewidth = 1) + geom_point() +
+  geom_point() +
   labs(x = "Herb and grass cover (%)", y = "Estimated Probability of Browse Present in 2022", color = "Treatment") +
   ylim(0, 1) +
   scale_x_continuous() + # Set x-axis breaks and labels
