@@ -282,7 +282,7 @@ ggplot(PlotsPinus, aes(x = Plot_type, y = Trees, fill = TREATMENT)) +
         panel.grid = element_line(color = "light gray"),
         panel.border = element_blank())
 
-## combining plots
+## combining data
 PlotsAM$Species <- "Amelanchier_lamarckii"
 PlotsBPE$Species <- "Betula_pendula"
 PlotsBPU$Species <- "Betula_pubescens"
@@ -293,7 +293,7 @@ PlotsSorbus$Species <- "Sorbus_aucuparia"
 PlotsPinus$Species <- "Pinus_sylvestris"
 
 all_data_plots <- bind_rows(
-  PlotsAM, PlotsBPE, PlotsBPU, PlotsPS, PlotsQR, PlotsRF, PlotsSorbus
+  PlotsAM, PlotsBPE, PlotsBPU, PlotsPS, PlotsQR, PlotsRF, PlotsSorbus, PlotsPinus
 )
 all_data_plots
 
@@ -308,6 +308,7 @@ ggplot(all_data_plots, aes(x = Plot_type, y = Average_height, fill = TREATMENT))
         panel.border = element_blank())
 
 ## species seperately
-ggplot(all_data_plots, aes(x = Plot_type, y = Average_height, color = Species))+
-  geom_boxplot() +   scale_fill_manual(values = custom_colors) +labs(x = "Plot type",
+plot_colour <- c("CAM" = "#FF0000", "EXRD" = "#008000")
+ggplot(all_data_plots, aes(x = Species, y = Average_height, color = Plot_type))+
+  geom_boxplot() +   scale_color_manual(values = plot_colour) +labs(x = "Species",
                                                                      y = "Average Tree Height (cm)")

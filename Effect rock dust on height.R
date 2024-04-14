@@ -3,23 +3,9 @@ library(dplyr)
 library(ggplot2)
 library(gridExtra)
 
-Heights22<- read.csv("Heights_EXRD_22.csv", fileEncoding = "UTF-8-BOM")
-Heights22
-
-glm_Heights22 <- glm(Average_height ~ TREATMENT, family = gaussian ,data = Heights22)
-summary(glm_Heights22)
 
 custom_colors <- c("#FF9966", "#33a02c","#808080", "#FFFF00", "#0000FF", "#000000",  "#00FFFF", "#FF00FF", "#FFA500", "#FFC0CB", "#800080", "#A52A2A", "#008080", "#FFD700", "#E6E6FA")
 
-# Visualize the relationship between treatment and height
-ggplot(Heights22, aes(x = TREATMENT, y = Average_height, fill = TREATMENT)) +
-  geom_boxplot() +   scale_fill_manual(values = custom_colors) +
-  labs(x = "Treatment",
-       y = "Average Tree Height")+
-  guides(fill = "none") +
-  theme(panel.background = element_rect(fill = "white", color = NA),
-        panel.grid = element_line(color = "light gray"),
-        panel.border = element_blank())
 
 ## amelanchier lamarckii
 HeightAM22<- read.csv("Heights_AM22.csv", fileEncoding = "UTF-8-BOM")
@@ -181,10 +167,15 @@ ggplot(all_data_heights, aes(x = TREATMENT, y = Average_height, fill = TREATMENT
         panel.grid = element_line(color = "light gray"),
         panel.border = element_blank())
 
-##species separate color but same plot
+##species separate names but same plot
+treatment_colour <- c("No" = "#FF0000", "Yes" = "#008000")
 
-ggplot(all_data_heights, aes(x = TREATMENT, y = Average_height, color = Species))+
-  geom_boxplot() +   scale_fill_manual(values = custom_colors) +scale_x_discrete(labels = c("No Rockdust", "Rockdust")) + labs(x = "Treatment",
+# Define custom names for treatments in the legend
+treatment_labels <- c("No" = "No Rockdust", "Yes" = "Rockdust")
+
+
+ggplot(all_data_heights, aes(x = Species, y = Average_height, color = TREATMENT))+
+  geom_boxplot() +   scale_color_manual(values = treatment_colour, labels = treatment_labels) + labs(x = "Species",
                                                                      y = "Average Tree Height (cm)") 
 
 
