@@ -2,25 +2,19 @@
 library(ggplot2)
 library(dplyr)
 library(effects)
+
+## Trees >50-160cm
 ##Amelanchier lamarckii
 
 PlotsAM<- read.csv("PlotsAM.csv", fileEncoding = "UTF-8-BOM")
 PlotsAM
-BrowseAM <- cbind(PlotsAM$B1,PlotsAM$B0)
 
 
 glm_plotAM <- glm(Average_height ~ Plot_type, family = quasipoisson(link = "log") ,data = PlotsAM)
 summary(glm_plotAM)
 
-glm_BrowseAM <- glm(Average_height ~ BrowseAM, family = quasipoisson(link = "log"), data = PlotsAM)
-summary(glm_BrowseAM)
 
 plot(allEffects(glm_plotAM))
-
-glm_treesAM <- glm(Trees ~ Plot_type, family = quasipoisson(link = "log") ,data = PlotsAM)
-summary(glm_treesAM)
-
-
 
 ggplot(PlotsAM, aes(x = Plot_type, y = Average_height, fill = TREATMENT)) +
   geom_boxplot() +   scale_fill_manual(values = custom_colors) +
@@ -30,31 +24,16 @@ ggplot(PlotsAM, aes(x = Plot_type, y = Average_height, fill = TREATMENT)) +
         panel.grid = element_line(color = "light gray"),
         panel.border = element_blank())
 
-ggplot(PlotsAM, aes(x = Plot_type, y = Trees, fill = TREATMENT)) +
-  geom_boxplot() +   scale_fill_manual(values = custom_colors) +
-  labs(title = "Plot and treatment effect on number of trees of Amelanchier lamarckii", x = "Plot type",
-       y = "N Trees") +
-  theme(panel.background = element_rect(),
-        panel.grid = element_line(color = "light gray"),
-        panel.border = element_blank())
-
 ## Betula pendula
 PlotsBPE<- read.csv("PlotsBPE.csv", fileEncoding = "UTF-8-BOM")
 PlotsBPE
-BrowseBPE <- cbind(PlotsBPE$B1,PlotsBPE$B0)
 
 
 glm_plotBPE <- glm(Average_height ~ Plot_type, family = quasipoisson(link = "log") ,data = PlotsBPE)
 summary(glm_plotBPE)
 
-glm_BrowseBPE <- glm(Average_height ~ BrowseBPE, family = quasipoisson(link = "log"), data = PlotsBPE)
-summary(glm_BrowseBPE)
 
 plot(allEffects(glm_plotBPE))
-
-glm_treesBPE <- glm(Trees ~ Plot_type, family = quasipoisson(link = "log") ,data = PlotsBPE)
-summary(glm_treesBPE)
-
 
 
 ggplot(PlotsBPE, aes(x = Plot_type, y = Average_height, fill = TREATMENT)) +
@@ -65,31 +44,16 @@ ggplot(PlotsBPE, aes(x = Plot_type, y = Average_height, fill = TREATMENT)) +
         panel.grid = element_line(color = "light gray"),
         panel.border = element_blank())
 
-ggplot(PlotsBPE, aes(x = Plot_type, y = Trees, fill = TREATMENT)) +
-  geom_boxplot() +   scale_fill_manual(values = custom_colors) +
-  labs(title = "Plot and treatment effect on number of trees of Betula pendula", x = "Plot type",
-       y = "N Trees") +
-  theme(panel.background = element_rect(),
-        panel.grid = element_line(color = "light gray"),
-        panel.border = element_blank())
-
-
 ## Betula pubescens
 PlotsBPU<- read.csv("PlotsBPU.csv", fileEncoding = "UTF-8-BOM")
 PlotsBPU
-BrowseBPU <- cbind(PlotsBPU$B1,PlotsBPU$B0)
 
 
 glm_plotBPU <- glm(Average_height ~ Plot_type, family = quasipoisson(link = "log") ,data = PlotsBPU)
 summary(glm_plotBPU)
 
-glm_BrowseBPU <- glm(Average_height ~ BrowseBPU, family = quasipoisson(link = "log"), data = PlotsBPU)
-summary(glm_BrowseBPU)
 
 plot(allEffects(glm_plotBPU))
-
-glm_treesBPU <- glm(Trees ~ Plot_type, family = quasipoisson(link = "log") ,data = PlotsBPU)
-summary(glm_treesBPU)
 
 
 ggplot(PlotsBPU, aes(x = Plot_type, y = Average_height, fill = TREATMENT)) +
@@ -100,31 +64,16 @@ ggplot(PlotsBPU, aes(x = Plot_type, y = Average_height, fill = TREATMENT)) +
         panel.grid = element_line(color = "light gray"),
         panel.border = element_blank())
 
-ggplot(PlotsBPU, aes(x = Plot_type, y = Trees, fill = TREATMENT)) +
-  geom_boxplot() +   scale_fill_manual(values = custom_colors) +
-  labs(title = "Plot and treatment effect on number of trees of Betula pubescens", x = "Plot type",
-       y = "N Trees") +
-  theme(panel.background = element_rect(),
-        panel.grid = element_line(color = "light gray"),
-        panel.border = element_blank())
-
-
 ## Prunus serotina
 PlotsPS<- read.csv("PlotsPS.csv", fileEncoding = "UTF-8-BOM")
 PlotsPS
-BrowsePS <- cbind(PlotsPS$B1,PlotsPS$B0)
 
 
 glm_plotPS <- glm(Average_height ~ Plot_type, family = quasipoisson(link = "log") ,data = PlotsPS)
 summary(glm_plotPS)
 
-glm_BrowsePS <- glm(Average_height ~ BrowsePS, family = quasipoisson(link = "log"), data = PlotsPS)
-summary(glm_BrowsePS)
 
 plot(allEffects(glm_plotPS))
-
-glm_treesPS <- glm(Trees ~ Plot_type, family = quasipoisson(link = "log") ,data = PlotsPS)
-summary(glm_treesPS)
 
 
 ggplot(PlotsPS, aes(x = Plot_type, y = Average_height, fill = TREATMENT)) +
@@ -135,31 +84,15 @@ ggplot(PlotsPS, aes(x = Plot_type, y = Average_height, fill = TREATMENT)) +
         panel.grid = element_line(color = "light gray"),
         panel.border = element_blank())
 
-ggplot(PlotsPS, aes(x = Plot_type, y = Trees, fill = TREATMENT)) +
-  geom_boxplot() +   scale_fill_manual(values = custom_colors) +
-  labs(title = "Plot and treatment effect on number of trees of Prunus serotina", x = "Plot type",
-       y = "N Trees") +
-  theme(panel.background = element_rect(),
-        panel.grid = element_line(color = "light gray"),
-        panel.border = element_blank())
-
 
 ## Quercus robur
 PlotsQR<- read.csv("PlotsQR.csv", fileEncoding = "UTF-8-BOM")
 PlotsQR
-BrowseQR <- cbind(PlotsQR$B1,PlotsQR$B0)
-
 
 glm_plotQR <- glm(Average_height ~ Plot_type, family = quasipoisson(link = "log") ,data = PlotsQR)
 summary(glm_plotQR)
 
-glm_BrowseQR <- glm(Average_height ~ BrowseQR, family = quasipoisson(link = "log"), data = PlotsPS)
-summary(glm_BrowseQR)
-
 plot(allEffects(glm_plotQR))
-
-glm_treesQR <- glm(Trees ~  Plot_type, family = quasipoisson(link = "log") ,data = PlotsQR)
-summary(glm_treesQR)
 
 
 ggplot(PlotsQR, aes(x = Plot_type, y = Average_height, fill = TREATMENT)) +
@@ -170,30 +103,17 @@ ggplot(PlotsQR, aes(x = Plot_type, y = Average_height, fill = TREATMENT)) +
         panel.grid = element_line(color = "light gray"),
         panel.border = element_blank())
 
-ggplot(PlotsQR, aes(x = Plot_type, y = Trees, fill = TREATMENT)) +
-  geom_boxplot() +   scale_fill_manual(values = custom_colors) +
-  labs(title = "Plot and treatment effect on number of trees of Quercus robur", x = "Plot type",
-       y = "N Trees") +
-  theme(panel.background = element_rect(),
-        panel.grid = element_line(color = "light gray"),
-        panel.border = element_blank())
 
 ## Rhamnus frangula
 PlotsRF<- read.csv("PlotsRF.csv", fileEncoding = "UTF-8-BOM")
 PlotsRF
-BrowseRF <- cbind(PlotsRF$B1,PlotsRF$B0)
 
 
 glm_plotRF <- glm(Average_height ~ Plot_type, family = quasipoisson(link = "log") ,data = PlotsRF)
 summary(glm_plotRF)
 
-glm_BrowseRF <- glm(Average_height ~ BrowseRF, family = quasipoisson(link = "log"), data = PlotsRF)
-summary(glm_BrowseRF)
-
 plot(allEffects(glm_plotRF))
 
-glm_treesRF <- glm(Trees ~  Plot_type, family = quasipoisson(link = "log") ,data = PlotsRF)
-summary(glm_treesRF)
 
 
 ggplot(PlotsRF, aes(x = Plot_type, y = Average_height, fill = TREATMENT)) +
@@ -204,31 +124,17 @@ ggplot(PlotsRF, aes(x = Plot_type, y = Average_height, fill = TREATMENT)) +
         panel.grid = element_line(color = "light gray"),
         panel.border = element_blank())
 
-ggplot(PlotsRF, aes(x = Plot_type, y = Trees, fill = TREATMENT)) +
-  geom_boxplot() +   scale_fill_manual(values = custom_colors) +
-  labs(title = "Plot and treatment effect on number of trees of Rhamnus frangula", x = "Plot type",
-       y = "N Trees") +
-  theme(panel.background = element_rect(),
-        panel.grid = element_line(color = "light gray"),
-        panel.border = element_blank())
-
 
 ## Sorbus aucuparia
 PlotsSorbus<- read.csv("PlotsSorbus.csv", fileEncoding = "UTF-8-BOM")
 PlotsSorbus
-BrowseSorbus <- cbind(PlotsSorbus$B1,PlotsSorbus$B0)
 
 
 glm_plotSorbus <- glm(Average_height ~ Plot_type, family = quasipoisson(link = "log") ,data = PlotsSorbus)
 summary(glm_plotSorbus)
 
-glm_BrowseSorbus <- glm(Average_height ~ BrowseSorbus, family = quasipoisson(link = "log"), data = PlotsSorbus)
-summary(glm_BrowseSorbus)
 
 plot(allEffects(glm_plotSorbus))
-
-glm_treesSorbus <- glm(Trees ~  Plot_type, family = quasipoisson(link = "log") ,data = PlotsSorbus)
-summary(glm_treesSorbus)
 
 
 ggplot(PlotsSorbus, aes(x = Plot_type, y = Average_height, fill = TREATMENT)) +
@@ -239,31 +145,16 @@ ggplot(PlotsSorbus, aes(x = Plot_type, y = Average_height, fill = TREATMENT)) +
         panel.grid = element_line(color = "light gray"),
         panel.border = element_blank())
 
-ggplot(PlotsSorbus, aes(x = Plot_type, y = Trees, fill = TREATMENT)) +
-  geom_boxplot() +   scale_fill_manual(values = custom_colors) +
-  labs(title = "Plot and treatment effect on number of trees of Sorbus aucuparia", x = "Plot type",
-       y = "N Trees") +
-  theme(panel.background = element_rect(),
-        panel.grid = element_line(color = "light gray"),
-        panel.border = element_blank())
-
 
 ## Pinus sylvestris
 PlotsPinus<- read.csv("PlotsPinus.csv", fileEncoding = "UTF-8-BOM")
 PlotsPinus
-BrowsePinus <- cbind(PlotsPinus$B1,PlotsPinus$B0)
 
 
 glm_plotPinus <- glm(Average_height ~ Plot_type, family = quasipoisson(link = "log") ,data = PlotsPinus)
 summary(glm_plotPinus)
 
-glm_BrowsePinus <- glm(Average_height ~ BrowsePinus, family = quasipoisson(link = "log"), data = PlotsPinus)
-summary(glm_BrowsePinus)
-
 plot(allEffects(glm_plotPinus))
-
-glm_treesPinus <- glm(Trees ~  Plot_type, family = quasipoisson(link = "log") ,data = PlotsPinus)
-summary(glm_treesPinus)
 
 
 ggplot(PlotsPinus, aes(x = Plot_type, y = Average_height, fill = TREATMENT)) +
@@ -274,13 +165,6 @@ ggplot(PlotsPinus, aes(x = Plot_type, y = Average_height, fill = TREATMENT)) +
         panel.grid = element_line(color = "light gray"),
         panel.border = element_blank())
 
-ggplot(PlotsPinus, aes(x = Plot_type, y = Trees, fill = TREATMENT)) +
-  geom_boxplot() +   scale_fill_manual(values = custom_colors) +
-  labs(title = "Plot and treatment effect on number of trees of Pinus sylvestris", x = "Plot type",
-       y = "N Trees") +
-  theme(panel.background = element_rect(),
-        panel.grid = element_line(color = "light gray"),
-        panel.border = element_blank())
 
 ## combining data
 PlotsAM$Species <- "Amelanchier_lamarckii"
@@ -319,3 +203,203 @@ plot_colour <- c("CAM" = "#FF0000", "EXRD" = "#008000")
 ggplot(all_data_plots, aes(x = factor(Species, levels = desired_order_ploteffect), y = Average_height, color = Plot_type))+
   geom_boxplot() +   scale_color_manual(values = plot_colour) +labs(x = "Species",
                                                                      y = "Average Tree Height (cm)")
+## Trees up to 50cm##
+##Amelanchier lamarckii
+
+PlotsAM50<- read.csv("PlotsAM50.csv", fileEncoding = "UTF-8-BOM")
+PlotsAM50
+
+
+glm_plotAM50 <- glm(Average_height ~ Plot_type, family = quasipoisson(link = "log") ,data = PlotsAM50)
+summary(glm_plotAM50)
+
+
+plot(allEffects(glm_plotAM50))
+
+ggplot(PlotsAM50, aes(x = Plot_type, y = Average_height, fill = TREATMENT)) +
+  geom_boxplot() +   scale_fill_manual(values = custom_colors) +
+  labs(title = "Plot and treatment effect on average tree height of Amelanchier lamarckii", x = "Plot type",
+       y = "Average Tree Height (cm)") +
+  theme(panel.background = element_rect(),
+        panel.grid = element_line(color = "light gray"),
+        panel.border = element_blank())
+
+## Betula pendula
+PlotsBPE50<- read.csv("PlotsBPE50.csv", fileEncoding = "UTF-8-BOM")
+PlotsBPE50
+
+
+glm_plotBPE50 <- glm(Average_height ~ Plot_type, family = quasipoisson(link = "log") ,data = PlotsBPE50)
+summary(glm_plotBPE50)
+
+
+plot(allEffects(glm_plotBPE50))
+
+
+ggplot(PlotsBPE50, aes(x = Plot_type, y = Average_height, fill = TREATMENT)) +
+  geom_boxplot() +   scale_fill_manual(values = custom_colors) +
+  labs(title = "Plot and treatment effect on average tree height of Betula pendula", x = "Plot type",
+       y = "Average Tree Height (cm)") +
+  theme(panel.background = element_rect(),
+        panel.grid = element_line(color = "light gray"),
+        panel.border = element_blank())
+
+## Betula pubescens --> not enough data
+PlotsBPU50<- read.csv("PlotsBPU50.csv", fileEncoding = "UTF-8-BOM")
+PlotsBPU50
+
+
+glm_plotBPU50 <- glm(Average_height ~ Plot_type, family = quasipoisson(link = "log") ,data = PlotsBPU50)
+summary(glm_plotBPU50)
+
+
+plot(allEffects(glm_plotBPU50))
+
+
+ggplot(PlotsBPU50, aes(x = Plot_type, y = Average_height, fill = TREATMENT)) +
+  geom_boxplot() +   scale_fill_manual(values = custom_colors) +
+  labs(title = "Plot and treatment effect on average tree height of Betula pubescens", x = "Plot type",
+       y = "Average Tree Height (cm)") +
+  theme(panel.background = element_rect(),
+        panel.grid = element_line(color = "light gray"),
+        panel.border = element_blank())
+
+## Prunus serotina
+PlotsPS50<- read.csv("PlotsPS50.csv", fileEncoding = "UTF-8-BOM")
+PlotsPS50
+
+
+glm_plotPS50 <- glm(Average_height ~ Plot_type, family = quasipoisson(link = "log") ,data = PlotsPS50)
+summary(glm_plotPS50)
+
+
+plot(allEffects(glm_plotPS50))
+
+
+ggplot(PlotsPS50, aes(x = Plot_type, y = Average_height, fill = TREATMENT)) +
+  geom_boxplot() +   scale_fill_manual(values = custom_colors) +
+  labs(title = "Plot and treatment effect on average tree height of Prunus serotina", x = "Plot type",
+       y = "Average Tree Height (cm)") +
+  theme(panel.background = element_rect(),
+        panel.grid = element_line(color = "light gray"),
+        panel.border = element_blank())
+
+
+## Quercus robur
+PlotsQR50<- read.csv("PlotsQR50.csv", fileEncoding = "UTF-8-BOM")
+PlotsQR50
+
+glm_plotQR50 <- glm(Average_height ~ Plot_type, family = quasipoisson(link = "log") ,data = PlotsQR50)
+summary(glm_plotQR50)
+
+plot(allEffects(glm_plotQR50))
+
+
+ggplot(PlotsQR50, aes(x = Plot_type, y = Average_height, fill = TREATMENT)) +
+  geom_boxplot() +   scale_fill_manual(values = custom_colors) +
+  labs(title = "Plot and treatment effect on average tree height of Quercus robur", x = "Plot type",
+       y = "Average Tree Height (cm)") +
+  theme(panel.background = element_rect(),
+        panel.grid = element_line(color = "light gray"),
+        panel.border = element_blank())
+
+
+## Rhamnus frangula
+PlotsRF50<- read.csv("PlotsRF50.csv", fileEncoding = "UTF-8-BOM")
+PlotsRF50
+
+
+glm_plotRF50 <- glm(Average_height ~ Plot_type, family = quasipoisson(link = "log") ,data = PlotsRF50)
+summary(glm_plotRF50)
+
+plot(allEffects(glm_plotRF50))
+
+
+
+ggplot(PlotsRF50, aes(x = Plot_type, y = Average_height, fill = TREATMENT)) +
+  geom_boxplot() +   scale_fill_manual(values = custom_colors) +
+  labs(title = "Plot and treatment effect on average tree height of Rhamnus frangular", x = "Plot type",
+       y = "Average Tree Height (cm)") +
+  theme(panel.background = element_rect(),
+        panel.grid = element_line(color = "light gray"),
+        panel.border = element_blank())
+
+
+## Sorbus aucuparia
+PlotsSorbus50<- read.csv("PlotsSorbus50.csv", fileEncoding = "UTF-8-BOM")
+PlotsSorbus50
+
+
+glm_plotSorbus50 <- glm(Average_height ~ Plot_type, family = quasipoisson(link = "log") ,data = PlotsSorbus50)
+summary(glm_plotSorbus50)
+
+
+plot(allEffects(glm_plotSorbus50))
+
+
+ggplot(PlotsSorbus50, aes(x = Plot_type, y = Average_height, fill = TREATMENT)) +
+  geom_boxplot() +   scale_fill_manual(values = custom_colors) +
+  labs(title = "Plot and treatment effect on average tree height of Sorbus aucuparia", x = "Plot type",
+       y = "Average Tree Height (cm)") +
+  theme(panel.background = element_rect(),
+        panel.grid = element_line(color = "light gray"),
+        panel.border = element_blank())
+
+
+## Pinus sylvestris
+PlotsPinus50<- read.csv("PlotsPinus50.csv", fileEncoding = "UTF-8-BOM")
+PlotsPinus50
+
+
+glm_plotPinus50 <- glm(Average_height ~ Plot_type, family = quasipoisson(link = "log") ,data = PlotsPinus50)
+summary(glm_plotPinus50)
+
+plot(allEffects(glm_plotPinus50))
+
+
+ggplot(PlotsPinus50, aes(x = Plot_type, y = Average_height, fill = TREATMENT)) +
+  geom_boxplot() +   scale_fill_manual(values = custom_colors) +
+  labs(title = "Plot and treatment effect on average tree height of Pinus sylvestris", x = "Plot type",
+       y = "Average Tree Height (cm)") +
+  theme(panel.background = element_rect(),
+        panel.grid = element_line(color = "light gray"),
+        panel.border = element_blank())
+
+
+## combining data
+PlotsAM50$Species <- "Amelanchier_lamarckii"
+PlotsBPE50$Species <- "Betula_pendula"
+PlotsBPU50$Species <- "Betula_pubescens"
+PlotsPS50$Species <- "Prunus_serotina"
+PlotsQR50$Species <- "Quercus_robur"
+PlotsRF50$Species <- "Rhamnus_frangula"
+PlotsSorbus50$Species <- "Sorbus_aucuparia"
+PlotsPinus50$Species <- "Pinus_sylvestris"
+
+all_data_plots50 <- bind_rows(
+  PlotsAM50, PlotsBPE50, PlotsBPU50, PlotsPS50, PlotsQR50, PlotsRF50, PlotsSorbus50, PlotsPinus50
+)
+all_data_plots50
+
+# Visualize the relationship between plot type and height
+
+ggplot(all_data_plots50, aes(x = Plot_type, y = Average_height, fill = TREATMENT)) +
+  geom_boxplot() +   scale_fill_manual(values = custom_colors) +
+  labs(title = "Plot type effect on average tree height", x = "Plot type",
+       y = "Average Tree Height")+
+  guides(fill = "none") +
+  theme(panel.background = element_rect(),
+        panel.grid = element_line(color = "light gray"),
+        panel.border = element_blank())
+
+## species seperately
+# Define order of species shown in plot
+desired_order_ploteffect50 <- c("Amelanchier_lamarckii", "Betula_pendula", "Betula_pubescens", "Prunus_serotina", "Quercus_robur", "Rhamnus_frangula", "Sorbus_aucuparia", "Pinus_sylvestris")
+
+# Define colours
+plot_colour <- c("CAM" = "#FF0000", "EXRD" = "#008000")
+
+# Plot boxplots
+ggplot(all_data_plots50, aes(x = factor(Species, levels = desired_order_ploteffect50), y = Average_height, color = Plot_type))+
+  geom_boxplot() +   scale_color_manual(values = plot_colour) +labs(x = "Species",
+                                                                    y = "Average Tree Height (cm)")
