@@ -44,7 +44,7 @@ ggplot(PlotsBPE, aes(x = Plot_type, y = Average_height, fill = TREATMENT)) +
         panel.grid = element_line(color = "light gray"),
         panel.border = element_blank())
 
-## Betula pubescens
+## Betula pubescens --> not enough data
 PlotsBPU<- read.csv("PlotsBPU.csv", fileEncoding = "UTF-8-BOM")
 PlotsBPU
 
@@ -177,7 +177,7 @@ PlotsSorbus$Species <- "Sorbus_aucuparia"
 PlotsPinus$Species <- "Pinus_sylvestris"
 
 all_data_plots <- bind_rows(
-  PlotsAM, PlotsBPE, PlotsBPU, PlotsPS, PlotsQR, PlotsRF, PlotsSorbus, PlotsPinus
+  PlotsAM, PlotsBPE, PlotsPS, PlotsQR, PlotsRF, PlotsSorbus, PlotsPinus
 )
 all_data_plots
 
@@ -194,7 +194,7 @@ ggplot(all_data_plots, aes(x = Plot_type, y = Average_height, fill = TREATMENT))
 
 ## species seperately
 # Define order of species shown in plot
-desired_order_ploteffect <- c("Amelanchier_lamarckii", "Betula_pendula", "Betula_pubescens", "Prunus_serotina", "Quercus_robur", "Rhamnus_frangula", "Sorbus_aucuparia", "Pinus_sylvestris")
+desired_order_ploteffect <- c("Amelanchier_lamarckii", "Betula_pendula", "Prunus_serotina", "Quercus_robur", "Rhamnus_frangula", "Sorbus_aucuparia", "Pinus_sylvestris")
 
 # Define colours
 plot_colour <- c("CAM" = "#FF0000", "EXRD" = "#008000")
@@ -377,7 +377,7 @@ PlotsSorbus50$Species <- "Sorbus_aucuparia"
 PlotsPinus50$Species <- "Pinus_sylvestris"
 
 all_data_plots50 <- bind_rows(
-  PlotsAM50, PlotsBPE50, PlotsBPU50, PlotsPS50, PlotsQR50, PlotsRF50, PlotsSorbus50, PlotsPinus50
+  PlotsAM50, PlotsBPE50, PlotsPS50, PlotsQR50, PlotsRF50, PlotsSorbus50, PlotsPinus50
 )
 all_data_plots50
 
@@ -394,7 +394,7 @@ ggplot(all_data_plots50, aes(x = Plot_type, y = Average_height, fill = TREATMENT
 
 ## species seperately
 # Define order of species shown in plot
-desired_order_ploteffect50 <- c("Amelanchier_lamarckii", "Betula_pendula", "Betula_pubescens", "Prunus_serotina", "Quercus_robur", "Rhamnus_frangula", "Sorbus_aucuparia", "Pinus_sylvestris")
+desired_order_ploteffect50 <- c("Amelanchier_lamarckii", "Betula_pendula", "Prunus_serotina", "Quercus_robur", "Rhamnus_frangula", "Sorbus_aucuparia", "Pinus_sylvestris")
 
 # Define colours
 plot_colour <- c("CAM" = "#FF0000", "EXRD" = "#008000")
