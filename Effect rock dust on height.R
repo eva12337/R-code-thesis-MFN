@@ -173,8 +173,11 @@ treatment_colour <- c("No" = "#FF0000", "Yes" = "#008000")
 # Define custom names for treatments in the legend
 treatment_labels <- c("No" = "No Rockdust", "Yes" = "Rockdust")
 
+# Define order of species shown in plot
+desired_order <- c("Amelanchier_lamarckii", "Betula_pendula", "Prunus_serotina", "Quercus_robur", "Rhamnus_frangula", "Sorbus_aucuparia", "Pinus_sylvestris")
 
-ggplot(all_data_heights, aes(x = Species, y = Average_height, color = TREATMENT))+
+# Plot boxplots
+ggplot(all_data_heights, aes(x = factor(Species, levels = desired_order), y = Average_height, color = TREATMENT))+
   geom_boxplot() +   scale_color_manual(values = treatment_colour, labels = treatment_labels) + labs(x = "Species",
                                                                      y = "Average Tree Height (cm)") 
 

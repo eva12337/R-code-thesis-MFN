@@ -298,6 +298,7 @@ all_data_plots <- bind_rows(
 all_data_plots
 
 # Visualize the relationship between plot type and height
+
 ggplot(all_data_plots, aes(x = Plot_type, y = Average_height, fill = TREATMENT)) +
   geom_boxplot() +   scale_fill_manual(values = custom_colors) +
   labs(title = "Plot type effect on average tree height", x = "Plot type",
@@ -308,7 +309,13 @@ ggplot(all_data_plots, aes(x = Plot_type, y = Average_height, fill = TREATMENT))
         panel.border = element_blank())
 
 ## species seperately
+# Define order of species shown in plot
+desired_order_ploteffect <- c("Amelanchier_lamarckii", "Betula_pendula", "Betula_pubescens", "Prunus_serotina", "Quercus_robur", "Rhamnus_frangula", "Sorbus_aucuparia", "Pinus_sylvestris")
+
+# Define colours
 plot_colour <- c("CAM" = "#FF0000", "EXRD" = "#008000")
-ggplot(all_data_plots, aes(x = Species, y = Average_height, color = Plot_type))+
+
+# Plot boxplots
+ggplot(all_data_plots, aes(x = factor(Species, levels = desired_order_ploteffect), y = Average_height, color = Plot_type))+
   geom_boxplot() +   scale_color_manual(values = plot_colour) +labs(x = "Species",
                                                                      y = "Average Tree Height (cm)")
