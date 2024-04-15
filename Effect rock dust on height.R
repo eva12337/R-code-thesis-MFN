@@ -86,10 +86,11 @@ ggplot(HeightQRO, aes(x = TREATMENT, y = Average_height, fill = TREATMENT)) +
         panel.border = element_blank())
 
 ## Quercus rubra
+##only for one site data so not able to do glm
 HeightQRU<- read.csv("Heights_QRU.csv", fileEncoding = "UTF-8-BOM")
 HeightQRU
 
-##only for one site data so not able to do glm
+
 
 ## Rhamnus frangula
 HeightRF<- read.csv("Heights_RF.csv", fileEncoding = "UTF-8-BOM")
