@@ -8,15 +8,15 @@ custom_colors <- c("#FF9966", "#33a02c","#808080", "#FFFF00", "#0000FF", "#00000
 
 
 ## amelanchier lamarckii
-HeightAM22<- read.csv("Heights_AM22.csv", fileEncoding = "UTF-8-BOM")
-HeightAM22
+HeightAM<- read.csv("Heights_AM.csv", fileEncoding = "UTF-8-BOM")
+HeightAM
 
-glm_HeightAM22 <- glm(Average_height ~ TREATMENT, family = quasipoisson(link = "log") ,data = HeightAM22)
-summary(glm_HeightAM22)
+glm_HeightAM <- glm(Average_height ~ TREATMENT, family = quasipoisson(link = "log") ,data = HeightAM)
+summary(glm_HeightAM)
 
 
 # Visualize the relationship between treatment and height
-ggplot(HeightAM22, aes(x = TREATMENT, y = Average_height, fill = TREATMENT)) +
+ggplot(HeightAM, aes(x = TREATMENT, y = Average_height, fill = TREATMENT)) +
   geom_boxplot() +   scale_fill_manual(values = custom_colors) +
   labs(title = "Treatment effect on average tree height of Amelanchier lamarckii", x = "Treatment",
        y = "Average Tree Height")+
@@ -27,7 +27,7 @@ ggplot(HeightAM22, aes(x = TREATMENT, y = Average_height, fill = TREATMENT)) +
 
 
 ## Betula pendula
-HeightBPE<- read.csv("Heights_BPE_22.csv", fileEncoding = "UTF-8-BOM")
+HeightBPE<- read.csv("Heights_BPE.csv", fileEncoding = "UTF-8-BOM")
 HeightBPE
 
 glm_BPE <- glm(Average_height ~ TREATMENT, family = quasipoisson(link = "log") ,data = HeightBPE)
@@ -50,7 +50,7 @@ HeightBPU<- read.csv("HeightsBPU.csv", fileEncoding = "UTF-8-BOM")
 HeightBPU
 
 ## Prunus serotina
-HeightPS<- read.csv("Heights_PS_22.csv", fileEncoding = "UTF-8-BOM")
+HeightPS<- read.csv("Heights_PS.csv", fileEncoding = "UTF-8-BOM")
 HeightPS
 
 glm_PS <- glm(Average_height ~ TREATMENT, family = quasipoisson(link = "log") ,data = HeightPS)
